@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import os
-from datetime import datetime , timedelta
+from datetime import datetime, timedelta
 
 # Senha do administrador
 ADMIN_PASSWORD = "ddd"
@@ -12,16 +12,18 @@ csv_file_path = 'dados.csv'
 # Função para ler o CSV ou criar um novo se não existir
 def read_or_create_csv(file_path):
     if os.path.exists(file_path):
-        return pd.read_csv(file_path)
+        return pd.read_csv(file_path, sep=';', encoding='utf-8-sig')
     else:
         # Defina as colunas do seu CSV aqui
-        return pd.DataFrame(columns=['nome', 'idade','Gênero','alimentação saudável?','atividade física regularmente?','exame de saúde no último ano?','fuma?','hora','data'])
+        return pd.DataFrame(columns=['nome', 'idade', 'Gênero', 'alimentação saudável?', 'atividade física regularmente?', 'exame de saúde no último ano?', 'fuma?', 'hora', 'data'])
 
 # Função para adicionar dados ao CSV
 def add_data_to_csv(file_path, data):
     df = read_or_create_csv(file_path)
-    df = df._append(data, ignore_index=True)
-    df.to_csv(file_path, index=False)
+    new_row = pd.DataFrame([data])
+    df = pd.concat([df, new_row], ignore_index=True)
+    df.to_csv(file_path, sep=';', index=False, encoding='utf-8-sig')
+    
 
 # Função para esvaziar o conteúdo do CSV
 def clear_csv(file_path):
