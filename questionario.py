@@ -30,8 +30,8 @@ class Questionario:
     def coletar_dados(self):
         # Coleta a idade
         idade = self.obter_resposta(self.perguntas['idade'], self.respostasvalidas['limite_idade'])
-        if idade not in self.respostasvalidas['limite_idade']:
-            print('Idade inválida. Por favor, insira um valor entre 1 e 100 ou 00 para sair.')
+        if idade == '00':
+            print('Finalizando o questionário.')
             return False
 
         # Coleta o gênero
