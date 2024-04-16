@@ -8,6 +8,8 @@ ADMIN_PASSWORD = "ddd"
 
 # Caminho para o arquivo CSV
 csv_file_path = 'dados.csv'
+# Padrão de respotas
+padrao_respostas = ['Sim', 'Não', 'Não sei responder']
 
 # Função para ler o CSV ou criar um novo se não existir
 def read_or_create_csv(file_path):
@@ -15,7 +17,7 @@ def read_or_create_csv(file_path):
         return pd.read_csv(file_path, sep=';', encoding='utf-8-sig')
     else:
         # Defina as colunas do seu CSV aqui
-        return pd.DataFrame(columns=['nome', 'idade', 'Gênero', 'alimentação saudável?', 'atividade física regularmente?', 'exame de saúde no último ano?', 'fuma?', 'hora', 'data'])
+        return pd.DataFrame(columns=['nome', 'idade','Gênero','Você dorme entre 6 e 8 horas por dia?','atividade física regularmente?','você consome pelo 3 litros de água diariamente?','fuma?','pergunta personalizada 1','pergunta personalizada 2','hora','data'])
 
 # Função para adicionar dados ao CSV
 def add_data_to_csv(file_path, data):
@@ -27,36 +29,45 @@ def add_data_to_csv(file_path, data):
 
 # Função para esvaziar o conteúdo do CSV
 def clear_csv(file_path):
-    empty_df = pd.DataFrame(columns=['nome', 'idade','Gênero','alimentação saudável?','atividade física regularmente?','exame de saúde no último ano?','fuma?','hora','data'])
+    empty_df = pd.DataFrame(columns=['nome', 'idade','Gênero','Você dorme entre 6 e 8 horas por dia?','atividade física regularmente?','você consome pelo 3 litros de água diariamente?','fuma?','pergunta personalizada 1','pergunta personalizada 2','hora','data'])
     empty_df.to_csv(file_path, index=False)
 
+genero = st.radio("Selecione seu gênero:", ['Masculino', 'Feminino', 'Outro'])
 # Crie o formulário no Streamlit
 with st.form(key='my_form', clear_on_submit=True):
     nome = st.text_input(label='Nome')
-    idade = st.text_input(label='Idade')
-    genero = st.selectbox('Qual seu gênero?', ['Masculino','Feminino','Outro'])
-    alimentacao = st.selectbox('Você considera sua alimentação saudável?', ['Sim','Não','Talvez'])
-    atv_fisica= st.selectbox('Você pratica atividade física regularmente?', ['Sim','Não','Talvez'])
-    exame = st.selectbox('Você realizou algum exame de saúde preventivo no último ano?', ['Sim','Não','Talvez'])
-    fuma = st.selectbox('Você fuma?', ['Sim','Não','Talvez'])
+    idade = st.number_input(label='Idade', min_value=1, max_value=100)
+    dormir = st.selectbox('Você dorme entre 6 e 8 horas por dia?', padrao_respostas)
+    atv_fisica = st.selectbox('Você faz atividades fisicas regulamente?', padrao_respostas)
+    agua = st.selectbox('você consome pelo 3 litros de água diariamente?', padrao_respostas)
+    fuma = st.selectbox('Você fuma?', padrao_respostas)
+    pergunta_personalizada_1 = ""
+    pergunta_personalizada_2 = ""
+
+    if genero == 'Masculino':
+        pergunta_personalizada_1 = st.selectbox('Como homem, você já evitou certos tipos de atividade física por acreditar que não são "apropriados" para o seu gênero?', padrao_respostas)
+    elif genero == 'Feminino':
+        pergunta_personalizada_2 = st.selectbox('Como mulher, você sente que sua escolha de atividades físicas é influenciada por preocupações com segurança?', padrao_respostas)
 
     submit_button = st.form_submit_button(label='Enviar')
 
 # Se o botão de envio for pressionado, adicione os dados ao CSV
 if submit_button:
     data_completa = datetime.now()
-    data_completa_brasil = data_completa - timedelta(hours=3)
+    data_completa_brasil = data_completa 
     hora = data_completa_brasil.strftime('%H:%M:%S')
     data = data_completa_brasil.strftime('%d/%m/%Y')
     new_data = {'nome': nome,
-                 'idade': idade,
-                 'Gênero':genero,
-                 'alimentação saudável?':alimentacao,
-                 'atividade física regularmente?':atv_fisica,
-                 'exame de saúde no último ano?':exame,
-                 'fuma?':fuma,
-                 'hora':hora,
-                 'data':data
+                'idade': idade,
+                'Gênero': genero,
+                'Você dorme entre 6 e 8 horas por dia?': dormir,
+                'atividade física regularmente?': atv_fisica,
+                'você consome pelo 3 litros de água diariamente?': agua,
+                'fuma?': fuma,
+                'pergunta personalizada 1': pergunta_personalizada_1,
+                'pergunta personalizada 2': pergunta_personalizada_2,
+                'hora': hora,
+                'data': data
                  }
     add_data_to_csv(csv_file_path, new_data)
     st.success("Dados adicionados com sucesso!")

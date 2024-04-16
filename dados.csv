@@ -1,1 +1,17 @@
-nome,idade,Gênero,alimentação saudável?,atividade física regularmente?,exame de saúde no último ano?,fuma?,hora,data
+﻿nome;idade;Gênero;Você dorme entre 6 e 8 horas por dia?;atividade física regularmente?;você consome pelo 3 litros de água diariamente?;fuma?;pergunta personalizada 1;pergunta personalizada 2;hora;data
+d;3;Masculino;Sim;Sim;Sim;Sim;Sim;;13:49:55;16/04/2024
+c;4;Masculino;Sim;Sim;Sim;Sim;Sim;;13:49:59;16/04/2024
+t;33;Feminino;Sim;Sim;Sim;Sim;;Sim;13:50:04;16/04/2024
+aa;33;Feminino;Sim;Sim;Sim;Sim;;Sim;13:50:10;16/04/2024
+33;55;Feminino;Sim;Sim;Sim;Sim;;Sim;13:50:19;16/04/2024
+ss;33;Masculino;Não;Não;Não;Não;Não;;13:55:42;16/04/2024
+delsonn;44;Masculino;Não;Não;Não;Sim;Sim;;13:55:56;16/04/2024
+delsooon;100;Masculino;Sim;Sim;Sim;Não;Sim;;14:04:11;16/04/2024
+;1;Masculino;Sim;Sim;Sim;Não;Sim;;14:04:13;16/04/2024
+;1;Masculino;Sim;Sim;Sim;Não;Sim;;14:04:15;16/04/2024
+ded;14;Masculino;Sim;Sim;Sim;Sim;Sim;;17:09:55;16/04/2024
+;1;Masculino;Sim;Sim;Sim;Sim;Sim;;17:09:56;16/04/2024
+;1;Masculino;Sim;Sim;Sim;Sim;Sim;;17:09:56;16/04/2024
+delson;55;Masculino;Sim;Sim;Sim;Sim;Sim;;17:11:30;16/04/2024
+;1;Masculino;Sim;Sim;Sim;Sim;Sim;;17:11:31;16/04/2024
+;1;Masculino;Sim;Sim;Sim;Não sei responder;Sim;;17:25:53;16/04/2024

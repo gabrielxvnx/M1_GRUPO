@@ -19,10 +19,10 @@ class DadosSessao:
                                          'você consome pelo 3 litros de água diariamente?': agua,
                                          'fuma?': fuma,
                                          'pergunta personalizada 1': pergunta_personalizada_1,
-                                         'pergu nta personalizada 2': pergunta_personalizada_2,
+                                         'pergunta personalizada 2': pergunta_personalizada_2,
                                          'hora': hora,
                                          'data': data
-                                         })
+                                         }) 
 
     def converter_para_csv(self, data):
         dataframe = pd.DataFrame(data)
