@@ -30,7 +30,7 @@ def add_data_to_csv(file_path, data):
 # Função para esvaziar o conteúdo do CSV
 def clear_csv(file_path):
     empty_df = pd.DataFrame(columns=['nome', 'idade','Gênero','Você dorme entre 6 e 8 horas por dia?','atividade física regularmente?','você consome pelo 3 litros de água diariamente?','fuma?','pergunta personalizada 1','pergunta personalizada 2','hora','data'])
-    empty_df.to_csv(file_path, index=False)
+    empty_df.to_csv(file_path, sep=';', index=False)
 
 genero = st.radio("Selecione seu gênero:", ['Masculino', 'Feminino', 'Outro'])
 # Crie o formulário no Streamlit
@@ -95,4 +95,3 @@ with st.expander('esvazair dados'):
             st.success("CSV esvaziado com sucesso!")
         else:
             st.error("Senha incorreta! Apenas administradores podem esvaziar o CSV.")
-
