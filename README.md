@@ -1,7 +1,5 @@
-# M1_GRUPO
-# README - Sistema de Cadastro e Análise de Dados
-
-Este projeto foi desenvolvido em grupo durante o Módulo 1 por Delson, Airton, Gabriel Vinicius e Marlon. Consiste em um sistema de cadastro de informações pessoais e hábitos de saúde, dividido em duas partes principais:
+# Sistema de Cadastro e Análise de Dados
+Este projeto foi desenvolvido em grupo durante o Módulo 1. Consiste em um sistema de cadastro de informações pessoais e hábitos de saúde, dividido em duas partes principais:
 
 1. **Terminal Python (`main.py`)**
 2. **Aplicação Web com Streamlit (`app.py`)**
@@ -62,6 +60,3 @@ Para executar o projeto:
 ## Autores
 
 Este projeto foi desenvolvido por Delson, Airton, Gabriel Vinicius e Marlon.
-
----
-Este README fornece uma visão detalhada do projeto, suas funcionalidades, incluindo o cadastro múltiplo, e instruções para execução. Para detalhes específicos sobre implementação, consulte os comentários nos códigos-fonte fornecidos.
